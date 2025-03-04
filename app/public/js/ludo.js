@@ -11,22 +11,25 @@ var PLAYERS = {};
 
 var canvas = document.getElementById('theCanvas');
 var ctx = canvas.getContext('2d');
-canvas.height = 750;
-canvas.width = 750;
+canvas.height = 348;
+canvas.width = 348;
 
 let allPiecesePos = {
-    0:[{x: 50,y:125},{x:125,y: 50},{x:200,y:125},{x:125,y:200}],
-    1:[{x:500,y:125},{x:575,y: 50},{x:650,y:125},{x:575,y:200}],
-    2:[{x:500,y:575},{x:575,y:500},{x:650,y:575},{x:575,y:650}],
-    3:[{x: 50,y:575},{x:125,y:500},{x:200,y:575},{x:125,y:650}]
+    0: [{x: 23, y: 59}, {x: 59, y: 23}, {x: 94, y: 59}, {x: 59, y: 94}],
+    1: [{x: 235, y: 59}, {x: 270, y: 23}, {x: 305, y: 59}, {x: 270, y: 94}],
+    2: [{x: 235, y: 270}, {x: 270, y: 235}, {x: 305, y: 270}, {x: 270, y: 305}],
+    3: [{x: 23, y: 270}, {x: 59, y: 235}, {x: 94, y: 270}, {x: 59, y: 305}]
 }
 
+
 let homeTilePos = {
-    0:{0:{x: 50,y:300},1:{x:300,y:100}},
-    1:{0:{x:400,y: 50},1:{x:600,y:300}},
-    2:{0:{x:650,y:400},1:{x:400,y:600}},
-    3:{0:{x:300,y:650},1:{x:100,y:400}}
+    0: {0: {x: 23, y: 140}, 1: {x: 140, y: 47}},
+    1: {0: {x: 188, y: 23}, 1: {x: 282, y: 140}},
+    2: {0: {x: 305, y: 188}, 1: {x: 188, y: 282}},
+    3: {0: {x: 140, y: 305}, 1: {x: 47, y: 188}}
 }
+
+
 
 class Player{
     constructor(id){
@@ -35,7 +38,7 @@ class Player{
         for(let i=0;i<4;i++){
             this.myPieces[i] = new Piece(String(i),String(id));
         }
-        this.won = parseInt(0);        
+        this.won = parseInt(0);
     }
     draw(){
         for(let i=0;i<4;i++){
@@ -49,6 +52,7 @@ class Player{
         }else{return 0;}
     }
 }
+
 
 class Piece{
     constructor(i,id){
@@ -141,8 +145,8 @@ class Piece{
         }
     }
 
-    draw(){
-        ctx.drawImage(this.image, this.x, this.y, 50, 50);
+    draw() {
+        ctx.drawImage(this.image, this.x, this.y, 25, 25);  // Reduced from 50x50 to 25x25
     }
 
     update(num){
@@ -163,49 +167,50 @@ class Piece{
         }
     }
 
-    oneStepToRight(id,pid){
-        window.PLAYERS[id].myPieces[pid].x += 50;
-        console.log('to r',this.x,this.y,typeof(this.x),typeof(this.y));
+    oneStepToRight(id, pid) {
+        window.PLAYERS[id].myPieces[pid].x += 23;
+        console.log('Move Right', this.x, this.y);
     }
 
-    oneStepToLeft(id,pid){
-        window.PLAYERS[id].myPieces[pid].x -= 50;
-        console.log('to l',this.x,this.y,typeof(this.x),typeof(this.y));
+    oneStepToLeft(id, pid) {
+        window.PLAYERS[id].myPieces[pid].x -= 23;
+        console.log('Move Left', this.x, this.y);
     }
 
-    oneStepToTop(id,pid){
-        window.PLAYERS[id].myPieces[pid].y -= 50;
-        console.log('to t',this.x,this.y,typeof(this.x),typeof(this.y));
+    oneStepToTop(id, pid) {
+        window.PLAYERS[id].myPieces[pid].y -= 23;
+        console.log('Move Up', this.x, this.y);
     }
 
-    oneStepToBottom(id,pid){
-        window.PLAYERS[id].myPieces[pid].y += 50;
-        console.log('to b',this.x,this.y,typeof(this.x),typeof(this.y));
+    oneStepToBottom(id, pid) {
+        window.PLAYERS[id].myPieces[pid].y += 23;
+        console.log('Move Down', this.x, this.y);
     }
 
-    oneStepTowards45(id,pid){
-        window.PLAYERS[id].myPieces[pid].x += 50;
-        window.PLAYERS[id].myPieces[pid].y -= 50;
-        console.log('to 45',this.x,this.y,typeof(this.x),typeof(this.y));
+    oneStepTowards45(id, pid) {
+        window.PLAYERS[id].myPieces[pid].x += 23;
+        window.PLAYERS[id].myPieces[pid].y -= 23;
+        console.log('Move 45°', this.x, this.y);
     }
 
-    oneStepTowards135(id,pid){
-        window.PLAYERS[id].myPieces[pid].x -= 50;
-        window.PLAYERS[id].myPieces[pid].y -= 50;
-        console.log('to 135',this.x,this.y,typeof(this.x),typeof(this.y));
+    oneStepTowards135(id, pid) {
+        window.PLAYERS[id].myPieces[pid].x -= 23;
+        window.PLAYERS[id].myPieces[pid].y -= 23;
+        console.log('Move 135°', this.x, this.y);
     }
 
-    oneStepTowards225(id,pid){
-        window.PLAYERS[id].myPieces[pid].x -= 50;
-        window.PLAYERS[id].myPieces[pid].y += 50;
-        console.log('to 225',this.x,this.y,typeof(this.x),typeof(this.y));
+    oneStepTowards225(id, pid) {
+        window.PLAYERS[id].myPieces[pid].x -= 23;
+        window.PLAYERS[id].myPieces[pid].y += 23;
+        console.log('Move 225°', this.x, this.y);
     }
 
-    oneStepTowards315(id,pid){
-        window.PLAYERS[id].myPieces[pid].x += 50;
-        window.PLAYERS[id].myPieces[pid].y += 50;
-        console.log('to 315',this.x,this.y,typeof(this.x),typeof(this.y));
+    oneStepTowards315(id, pid) {
+        window.PLAYERS[id].myPieces[pid].x += 23;
+        window.PLAYERS[id].myPieces[pid].y += 23;
+        console.log('Move 315°', this.x, this.y);
     }
+
 
     kill(){
         this.x = allPiecesePos[this.color_id][this.Pid].x;

@@ -4,6 +4,8 @@
 
 body {
     border: 0;
+    background-color: #333;
+    color: #f2f2f2;
 }
 
 /*/// navbar ///*/
@@ -149,7 +151,7 @@ body {
     width: max-content;
     position: absolute;
     top: 7.5%;
-    left: 40%;
+    left: 25px;
 }
 
 .heading-tile:hover{
@@ -187,7 +189,7 @@ body {
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
-  
+
 /* Modal Content/Box */
 .modal-content {
     background-color: #fefefe;
@@ -209,14 +211,14 @@ body {
     align-content: center;
     position: relative;
     right: 20px;
-    left: 250px;
+    left: 10px;
 }
 .ludoImg {
-    width: 800px;
-    height: 800px;
+    width: 350px;
+    height: 350px;
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 25px;
+    left: 15px;
     z-index: -1;
 }
 
@@ -225,26 +227,26 @@ body {
 }
 
 .gameCanvas {
-    width: 750px;
-    height: 750px;
+    width: 350px;
+    height: 350px;
     position: absolute;
     top: 25px;
-    left: 25px;
+    left: 15px;
     border: 2px solid;
     z-index: 1;
 }
 
 .diceBoard {
     position: relative;
-    top: 20px;
-    left: 1100px;
+    top: 400px;
+    left: 0px;
     right: 0px;
 }
 
 .msgBoard {
     float: top;
     width: 400px;
-    height: 675px;
+    height: 120px;
     border-radius: 5px;
     align-content: center;
     padding: 8px 8px 8px 8px;
