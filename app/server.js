@@ -2,6 +2,8 @@ const {join} = require('path');
 const express = require('express');
 const {createServer} = require('http');
 const socketIO = require('socket.io');
+const cors = require("cors");
+
 
 const {PORT} = require('./config/config');
 
