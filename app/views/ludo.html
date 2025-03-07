@@ -72,6 +72,7 @@
         <img src="../images/LUDO_BOARD.svg" alt="THIS IS AN IMAGE" class="ludoImg" >
         <canvas class="gameCanvas" id="theCanvas"></canvas>
     </div>
+
     <div class="diceBoard">
         <div class="msgBoard">
             <div class="messageFromServer">
@@ -79,12 +80,27 @@
             </div>
 
         </div>
-        <div class="goButt">
-            <button id="randomButt" style="text-align: right;">GO</button>
-        </div>
-    </div>
-</div>
 
-<script src="../js/ludo.js"></script>
+        <div class="container">
+            <div class="goButt">
+                <button id="randomButt">
+                    <img src="../images/dice.png" alt="Rolling Image" class="rolling-img" id="image">
+                </button>
+            </div>
+        </div>
+
+
+        <script>
+            document.getElementById("image").addEventListener("click", function() {
+                this.classList.add("rotate");
+
+                // Remove class after animation ends to allow clicking again
+                setTimeout(() => {
+                    this.classList.remove("rotate");
+                }, 1000); // Matches the animation duration (1s)
+            });
+        </script>
+
+        <script src="../js/ludo.js"></script>
 </body>
 </html>
